@@ -23,7 +23,7 @@ function App() {
     function searchHandler() {
       if (debouncedText) {
         searchFilms(debouncedText).then((res) => {
-          if (Array.isArray(res.results) && res.results.length > 0) {
+          if (Array.isArray(res.results)) {
             setFilms(res.results);
           }
         });
@@ -54,6 +54,7 @@ function App() {
       {films.map((film) => (
         <Film film={film} />
       ))}
+      {films.length === 0 && <p>No Films Found </p>}
     </div>
   );
 }
